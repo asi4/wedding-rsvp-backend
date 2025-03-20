@@ -207,6 +207,21 @@
         return document.querySelector('input[name="attendance"]:checked').value === "כן";
     }
 
+    // Update guests input field based on attendance choice
+    document.querySelectorAll('input[name="attendance"]').forEach((radio) => {
+        radio.addEventListener("change", function () {
+            const guestsInput = document.getElementById("guests");
+            if (this.value === "לא") {
+                guestsInput.value = 0;
+                guestsInput.disabled = true;
+            } else {
+                guestsInput.value = 1;
+                guestsInput.disabled = false;
+            }
+        });
+    });
+
+
     // Wake up the backend when the page loads
     window.onload = function() {
         fetch("https://wedding-rsvp-backend-4edo.onrender.com/wake-up") // Replace with your actual backend URL
@@ -247,13 +262,15 @@
         const name = document.getElementById("name").value;
         const phone = document.getElementById("phone").value;
         const attendance = getAttendanceValue(); // Returns true or false
-        const guests = document.getElementById("guests").value;
+        const guests = attendance ? document.getElementById("guests").value : 0;
         const note = document.getElementById("note").value;
+        let whereFrom;
+        let guestsShouldBe;
 
         fetch("https://wedding-rsvp-backend-4edo.onrender.com/rsvp", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ name, phone, attendance, guests, note })
+            body: JSON.stringify({ whereFrom, name, phone, attendance, guestsShouldBe, guests, note })
         })
             .then(response => response.json())
             .then(data => {
