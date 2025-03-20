@@ -5,7 +5,7 @@ dotenv.config();
 
 const client = new Twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
 
-// Define your form base URL (Replace with actual hosted link)
+// The form's URL
 const RSVP_FORM_URL = "https://weddingme.netlify.app";
 
 export function sendSMS(to) {
