@@ -128,7 +128,7 @@
         <input type="text" id="name">
 
         <label>מספר טלפון:</label>
-        <input type="tel" id="phone" readonly>
+        <input type="tel" id="phone">
 
         <label>האם את/ה מגיע/ה?</label>
         <select id="attendance">
@@ -153,7 +153,7 @@
 
     // Wake up the backend when the page loads
     window.onload = function() {
-        fetch("https://weddingme.netlify.app/wake-up") // Replace with your actual backend URL
+        fetch("https://wedding-rsvp-backend-4edo.onrender.com/wake-up") // Replace with your actual backend URL
             .then(response => console.log("✅ Backend is awake"))
             .catch(error => console.error("❌ Error waking up backend:", error));
 
@@ -182,7 +182,7 @@
         const guests = document.getElementById("guests").value;
         const note = document.getElementById("note").value;
 
-        fetch("https://weddingme.netlify.app/rsvp", {
+        fetch("https://wedding-rsvp-backend-4edo.onrender.com/rsvp", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ name, phone, attendance, guests, note })
