@@ -50,12 +50,12 @@ app.post("/rsvp", async (req: Request, res: Response): Promise<any> => {
             await existingGuest.save();
             console.log(`🔁 Guest "${name}", -${phone}- updated their RSVP.`);
             return res.json({ message: "RSVP updated." });
+        } else {
+            const newGuest = new Guest(req.body);
+            await newGuest.save();
+            console.log(`✅ New RSVP saved for guest: ${name}`);
+            return res.json({ message: "RSVP saved!" });
         }
-
-        const newGuest = new Guest(req.body);
-        await newGuest.save();
-        console.log(`✅ New RSVP saved for guest: ${name}`);
-        return res.json({ message: "RSVP saved!" });
 
     } catch (error: any) {
         console.error("❌ Error saving the RSVP!");
