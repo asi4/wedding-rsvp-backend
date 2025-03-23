@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import * as dotenv from "dotenv";
-import Guest, { IGuest } from "./models/Guest"; // No `.ts` needed
+import Guest, { IGuest } from "../models/Guest"; // No `.ts` needed
 
 dotenv.config();
 

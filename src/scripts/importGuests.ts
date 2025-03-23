@@ -2,7 +2,7 @@ import * as fs from "fs";
 import csv from "csv-parser";
 import mongoose from "mongoose";
 import * as dotenv from "dotenv";
-import Guest, { IGuest } from "./models/Guest";
+import Guest, { IGuest } from "../models/Guest";
 
 dotenv.config();
 
