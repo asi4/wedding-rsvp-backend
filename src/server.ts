@@ -2,8 +2,8 @@ import express, { Express, Request, Response } from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
-import Guest from "./models/Guest";
-import ErrorLog from "./models/ErrorLog";
+import Guest from "./models/Guest.js";
+import ErrorLog from "./models/ErrorLog.js";
 
 dotenv.config();
 
