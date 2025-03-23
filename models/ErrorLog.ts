@@ -19,7 +19,7 @@ export interface IErrorLog extends Document {
 const errorSchema = new Schema<IErrorLog>({
     whereFrom: String,
     name: String,
-    phone: { type: String, unique: false }, // in error the phone is not unique
+    phone: { type: String }, // in error the phone is not unique
     attendance: Boolean,
     guestsShouldBe: Number,
     guests: { type: Number, default: -1 },
