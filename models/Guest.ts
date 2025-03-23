@@ -17,7 +17,7 @@ export interface IGuest extends Document {
 const guestSchema = new Schema<IGuest>({
     whereFrom: { type: String },
     name: { type: String, required: true },
-    phone: { type: String, unique: true, required: true },
+    phone: { type: String, required: true },
     attendance: { type: Boolean, required: true },
     guestsShouldBe: { type: Number },
     guests: { type: Number, default: -1 },
