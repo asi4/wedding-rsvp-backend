@@ -67,6 +67,13 @@ function getQueryParam(param) {
 }
 
 function submitRSVP() {
+    const sendButton = document.getElementById("sendButton");
+    const buttonText = document.getElementById("buttonText");
+
+    // Show spinner
+    buttonText.innerHTML = '<span class="spinner"></span>';
+    sendButton.disabled = true;
+
     const name = document.getElementById("name").value;
     const phone = document.getElementById("phone").value;
     const attendance = getAttendanceValue(); // Returns true or false
@@ -83,11 +90,15 @@ function submitRSVP() {
         .then(response => response.json())
         .then(data => {
             document.body.innerHTML = `
-                <div style="text-align:center; margin-top:50px;">
-                    <h1 style="color: black;">תודה רבה!</h1>
-                    <p>האישור שלך התקבל בהצלחה.</p>
-                </div>
-            `;
+            <div style="text-align:center; margin-top:50px;">
+                <h1 style="color: black;">תודה רבה!</h1>
+                <p>האישור שלך התקבל בהצלחה.</p>
+            </div>
+        `;
         })
-        .catch(error => alert("שגיאה בשליחה, נסה שנית!"));
+        .catch(error => {
+            alert("שגיאה בשליחה, נסה שנית!");
+            buttonText.innerText = "שלח";
+            sendButton.disabled = false;
+        });
 }
